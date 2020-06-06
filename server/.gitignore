@@ -1,0 +1,21 @@
+# server blobs
+*.jar
+
+# config files
+banned-ips.json
+banned-players.json
+bukkit.yml
+commands.yml
+help.yml
+permissions.yml
+spigot.yml
+usercache.json
+whitelist.json
+ops.json
+
+# generated directories
+logs/
+plugins/
+world/
+world_nether/
+world_the_end/

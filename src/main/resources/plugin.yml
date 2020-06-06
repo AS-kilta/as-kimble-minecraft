@@ -1,0 +1,4 @@
+name: com.asdvek.MinecraftASKimble.MinecraftASKimblePlugin
+version: 1.0
+main: com.asdvek.MinecraftASKimble.MinecraftASKimblePlugin
+api-version: 1.15
