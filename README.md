@@ -7,7 +7,11 @@ Minecraft client for the Guild of Automation and Systems Technology (AS) [Kimble
 
 ### IDE Setup
 1. Install [IntelliJ IDEA](https://www.jetbrains.com/idea/) IDE.
-2. Install [Java JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html). Alternatively you can download the IDE from within the IDE.
+2. Install [Java JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html). On Ubuntu you can install
+the right JDK version with the command
+    ```
+    sudo apt install openjdk-8-jdk
+    ```
 
 
 ### Project setup
