@@ -32,17 +32,32 @@ uses Java JDK version 8 or 1.8.
     cd server
     ```
 2. Download Spigot
+    
+    **Linux / macOS**
     ```
     wget https://cdn.getbukkit.org/spigot/spigot-1.15.2.jar
     ```
+    **Windows**
+    ```
+    curl.exe https://cdn.getbukkit.org/spigot/spigot-1.15.2.jar --output spigot-1.15.2.jar
+    ```
+   
 3. Launch server. On first startup this will generate the world and various other config files which might take a while.
+
+    **Linux / macOS**
     ```
     ./start.sh
+    ```
+   
+    **Windows**
+    ```
+    start.bat
     ```
 4. Launching the server should have generated a `plugins` directory. Place the compiled plugin jar file from `../target` to the `plugins`
 directory and then reload bukkit plugins with the `/reload` server command.
 
-    You can use the script `cleanup.sh` to remove the world data and config files to reset the `server` directory to its original state.
+    You can use the scripts `cleanup.sh` and `cleanup.bat` on Linux/macOS and Windows respectively to remove the world data and
+    config files to reset the `server` directory to its original state.
 
 # Compiling
 

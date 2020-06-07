@@ -6,3 +6,6 @@
 
 # generated binary blobs
 target
+
+# windows tmp files
+*~
