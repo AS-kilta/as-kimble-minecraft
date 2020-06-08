@@ -7,6 +7,7 @@ public class MinecraftASKimblePlugin extends JavaPlugin {
     public void onEnable() {
         // register custom commands
         this.getCommand(Const.COMMAND_KIMBLE).setExecutor(new CommandKimble());
+        this.getCommand(Const.COMMAND_DEBUG).setExecutor(new CommandDebug());
 
         // hello world print
         getLogger().info("onEnable called!");

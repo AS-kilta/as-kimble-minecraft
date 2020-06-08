@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+// TODO: extract common parsing functionality to another object and extend from there
 // TODO: Proper subcommand handling
 // TODO: Proper subcommand cli argument verification
 

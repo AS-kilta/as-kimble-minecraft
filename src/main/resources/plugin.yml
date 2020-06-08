@@ -7,3 +7,6 @@ commands:
   kimble:
     description: Manage a kimble game instance.
     usage: /<command>
+  debug:
+    description: General purpose debugging.
+    usage: /<command>

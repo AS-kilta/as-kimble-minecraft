@@ -5,10 +5,16 @@ package com.asdvek.MinecraftASKimble;
  */
 
 public class Const {
-    // command names, if changed these also need to be changed in plugin.yml
-    public static final String COMMAND_KIMBLE = "kimble";
+    /* command strings and their respective subcommand strings */
 
-    // subcommands
-    public static final String COMMAND_KIMBLE_START    = "start";
-    public static final String COMMAND_KIMBLE_STOP     = "stop";
+    // kimble
+    // Manage a kimble game instance
+    public static final String COMMAND_KIMBLE = "kimble";
+    public static final String COMMAND_KIMBLE_START    = "start";   // start a new game
+    public static final String COMMAND_KIMBLE_STOP     = "stop";    // stop game
+
+    // debug
+    // General purpose debugging
+    public static final String COMMAND_DEBUG = "debug";
+    public static final String COMMAND_DEBUG_GEN = "gen";           // generate blocks
 }
