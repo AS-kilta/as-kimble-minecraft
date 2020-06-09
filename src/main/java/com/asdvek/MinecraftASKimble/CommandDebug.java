@@ -5,11 +5,21 @@ import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 // TODO: extract common parsing functionality to another object and extend from there
 
-public class CommandDebug implements CommandExecutor {
+public class CommandDebug implements CommandExecutor, TabCompleter {
+    private final String[] subcommands = {
+            Const.COMMAND_DEBUG_GEN,
+            Const.COMMAND_DEBUG_BREAK,
+    };
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // Make sure a player executed the command
@@ -28,18 +38,37 @@ public class CommandDebug implements CommandExecutor {
         // subcommand handling
         switch (args[0]) {
             case Const.COMMAND_DEBUG_GEN:
-                // FIXME: add block generator call
-                System.out.println("debug gen called");
-                World world = Bukkit.getServer().getWorld("world");
-                System.out.println(world);
-                Location loc = new Location(world, 0.0, 4.0, 0.0);
-                Block block = world.getBlockAt(loc);
-                block.setType(Material.DIAMOND_BLOCK);
+                {
+                    System.out.println("debug gen called");
+                    World world = Bukkit.getServer().getWorld("world");
+                    System.out.println(world);
+                    Location loc = new Location(world, 0.0, 4.0, 0.0);
+                    Block block = world.getBlockAt(loc);
+                    block.setType(Material.DIAMOND_BLOCK);
+                }
+                break;
+            case Const.COMMAND_DEBUG_BREAK:
+                {
+                    System.out.println("debug break called");
+                    World world = Bukkit.getServer().getWorld("world");
+                    System.out.println(world);
+                    Location loc = new Location(world, 0.0, 4.0, 0.0);
+                    Block block = world.getBlockAt(loc);
+                    block.setType(Material.AIR);
+                }
                 break;
             default:
                 break;
         }
 
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+        if (args.length == 1) {
+            return new ArrayList<String>(Arrays.asList(subcommands));
+        }
+        return new ArrayList<String>();
     }
 }

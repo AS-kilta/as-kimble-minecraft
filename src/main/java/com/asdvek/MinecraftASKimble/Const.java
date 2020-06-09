@@ -17,4 +17,5 @@ public class Const {
     // General purpose debugging
     public static final String COMMAND_DEBUG = "debug";
     public static final String COMMAND_DEBUG_GEN = "gen";           // generate blocks
+    public static final String COMMAND_DEBUG_BREAK = "break";       // break blocks
 }
