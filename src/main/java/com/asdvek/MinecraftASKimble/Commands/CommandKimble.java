@@ -1,5 +1,6 @@
-package com.asdvek.MinecraftASKimble;
+package com.asdvek.MinecraftASKimble.Commands;
 
+import com.asdvek.MinecraftASKimble.Const;
 import org.apache.commons.lang.NotImplementedException;
 import org.bukkit.Material;
 import org.bukkit.command.Command;

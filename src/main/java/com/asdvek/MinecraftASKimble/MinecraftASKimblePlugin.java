@@ -1,5 +1,7 @@
 package com.asdvek.MinecraftASKimble;
 
+import com.asdvek.MinecraftASKimble.Commands.CommandDebug;
+import com.asdvek.MinecraftASKimble.Commands.CommandKimble;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MinecraftASKimblePlugin extends JavaPlugin {

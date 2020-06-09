@@ -1,5 +1,6 @@
-package com.asdvek.MinecraftASKimble;
+package com.asdvek.MinecraftASKimble.Commands;
 
+import com.asdvek.MinecraftASKimble.Const;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
