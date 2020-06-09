@@ -32,7 +32,7 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
         // validate command arguments
         if (args.length == 0)
         {
-            return false;
+            return true;
         }
 
         // subcommand handling

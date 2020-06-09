@@ -1,17 +1,30 @@
 package com.asdvek.MinecraftASKimble;
 
+import org.apache.commons.lang.NotImplementedException;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 // TODO: extract common parsing functionality to another object and extend from there
 // TODO: Proper subcommand handling
 // TODO: Proper subcommand cli argument verification
 
-public class CommandKimble implements CommandExecutor {
+public class CommandKimble implements CommandExecutor, TabCompleter {
+    private final String[] subcommands = {
+            Const.COMMAND_KIMBLE_START,
+            Const.COMMAND_KIMBLE_STOP,
+            Const.COMMAND_KIMBLE_SPECTATE,
+            Const.COMMAND_KIMBLE_LEAVE,
+    };
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // Make sure a player executed the command
@@ -24,8 +37,8 @@ public class CommandKimble implements CommandExecutor {
         // validate command arguments
         if (args.length == 0)
         {
-            usage();
-            return false;
+            usage(player);
+            return true;
         }
 
         // subcommand handling
@@ -41,10 +54,17 @@ public class CommandKimble implements CommandExecutor {
                 ItemStack emerald = new ItemStack(Material.EMERALD);
                 player.getInventory().addItem(emerald);
                 break;
+            case Const.COMMAND_KIMBLE_SPECTATE:
+                // FIXME:   Validate start subcommand args and teleport player to spectate a given game
+                player.sendMessage(Const.MSG_NOT_IMPLEMENTED);
+                break;
+            case Const.COMMAND_KIMBLE_LEAVE:
+                // FIXME: Validate start subcommand args and remove player from spectator area
+                player.sendMessage(Const.MSG_NOT_IMPLEMENTED);
+                break;
             default:
                 // FIXME: Invalid command entered, handle accordingly
-                ItemStack flesh = new ItemStack(Material.ROTTEN_FLESH);
-                player.getInventory().addItem(flesh);
+                player.sendMessage(Const.MSG_INVALID_COMMAND);
                 break;
         }
 
@@ -52,7 +72,16 @@ public class CommandKimble implements CommandExecutor {
     }
 
     // print usage message
-    private void usage() {
-        // TODO: send a private message with usage instructions to player who invoked the command
+    private void usage(Player player) {
+        player.sendMessage(String.format(String.format("Usage: /%s <subcommand>", Const.COMMAND_KIMBLE)));
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+        if (args.length == 1)
+        {
+            return new ArrayList<String>(Arrays.asList(subcommands));
+        }
+        return new ArrayList<String>();
     }
 }

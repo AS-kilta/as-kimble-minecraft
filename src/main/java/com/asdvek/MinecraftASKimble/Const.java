@@ -10,12 +10,18 @@ public class Const {
     // kimble
     // Manage a kimble game instance
     public static final String COMMAND_KIMBLE = "kimble";
-    public static final String COMMAND_KIMBLE_START    = "start";   // start a new game
-    public static final String COMMAND_KIMBLE_STOP     = "stop";    // stop game
+    public static final String COMMAND_KIMBLE_START    = "start";       // start a new game
+    public static final String COMMAND_KIMBLE_STOP     = "stop";        // stop game
+    public static final String COMMAND_KIMBLE_SPECTATE = "spectate";    // spectate a given game
+    public static final String COMMAND_KIMBLE_LEAVE    = "leave";       // leave spectator mode
 
     // debug
     // General purpose debugging
     public static final String COMMAND_DEBUG = "debug";
     public static final String COMMAND_DEBUG_GEN = "gen";           // generate blocks
     public static final String COMMAND_DEBUG_BREAK = "break";       // break blocks
+
+    // command feedback messages
+    public static final String MSG_NOT_IMPLEMENTED = "Command has not been implemented!";
+    public static final String MSG_INVALID_COMMAND = "Command does not exist!";
 }
