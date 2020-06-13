@@ -43,6 +43,7 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
                 {
                     System.out.println("debug gen called");
                     WorldEditor.replaceVolume(0.5, 4.5, 0.5, 0.5+10.0, 4.5+10.0, 0.5+10.0, Material.DIAMOND_BLOCK);
+                    WorldEditor.replaceVolume(0.5+9.0, 4.5+9.0, 0.5+9.0, 1.5, 5.5, 1.5, Material.BEDROCK);
                 }
                 break;
             case Const.COMMAND_DEBUG_BREAK:

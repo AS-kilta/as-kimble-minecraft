@@ -5,12 +5,17 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.joml.Vector3d;
 
 /**
  * World editing helpers implemented without math libraries in a naive way.
  */
 
 public class WorldEditor {
+
+    /**
+     * functions with scalar arguments
+     */
 
     // replace block at location (x,y,z) with material given by `blockMaterial`
     public static void replaceBlock(double x, double y, double z, Material blockMaterial) {
@@ -62,4 +67,40 @@ public class WorldEditor {
     public static void clearVolume(double sx, double sy, double sz, double ex, double ey, double ez) {
         replaceVolume(sx, sy, sz, ex, ey, ez, Material.AIR);
     }
+
+
+    /**
+     * functions with vector arguments
+     */
+    // replace block at location (x,y,z) with material given by `blockMaterial`
+    public static void replaceBlock(Vector3d v, Material blockMaterial) {
+        replaceBlock(v.x(), v.y(), v.z(), blockMaterial);
+    }
+
+    // replace block at location (x,y,z) with air
+    public static void clearBlock(Vector3d v) {
+        replaceBlock(v, Material.AIR);
+    }
+
+    // replace all blocks enclosed in a volume with the given material
+    // the volume is specified by two opposite corners of a cuboid
+    // both starting and ending point are inclusive
+    public static void replaceVolume(Vector3d vStart, Vector3d vEnd, Material blockMaterial) {
+        // extract scalar index ending points from vectors
+        double sx = vStart.x();
+        double sy = vStart.y();
+        double sz = vStart.z();
+        double ex = vEnd.x();
+        double ey = vEnd.y();
+        double ez = vEnd.z();
+
+        // call scalar variant of the function
+        replaceVolume(sx, sy, sz, ex, ey, ez, blockMaterial);
+    }
+
+    // replace given volume with air
+    public static void clearVolume(Vector3d vStart, Vector3d vEnd) {
+        replaceVolume(vStart, vEnd, Material.AIR);
+    }
+
 }
