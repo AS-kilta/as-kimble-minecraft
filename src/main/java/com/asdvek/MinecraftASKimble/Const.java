@@ -24,4 +24,7 @@ public class Const {
     // command feedback messages
     public static final String MSG_NOT_IMPLEMENTED = "Command has not been implemented!";
     public static final String MSG_INVALID_COMMAND = "Command does not exist!";
+
+    /* world name (for programmatic world editing) */
+    public static final String WORLD_NAME = "world";
 }

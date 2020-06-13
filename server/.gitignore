@@ -1,6 +1,10 @@
 # server blobs
 *.jar
 
+# server config (prevent commiting server config file date string changes)
+# if there are some real configuration changes just add the file to commit manually
+server.properties
+
 # config files
 banned-ips.json
 banned-players.json
