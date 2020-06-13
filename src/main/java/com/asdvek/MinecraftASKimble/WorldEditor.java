@@ -5,7 +5,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.joml.Vector3d;
 
 /**
  * World editing helpers implemented without math libraries in a naive way.
@@ -73,19 +72,19 @@ public class WorldEditor {
      * functions with vector arguments
      */
     // replace block at location (x,y,z) with material given by `blockMaterial`
-    public static void replaceBlock(Vector3d v, Material blockMaterial) {
+    public static void replaceBlock(Vec3 v, Material blockMaterial) {
         replaceBlock(v.x(), v.y(), v.z(), blockMaterial);
     }
 
     // replace block at location (x,y,z) with air
-    public static void clearBlock(Vector3d v) {
+    public static void clearBlock(Vec3 v) {
         replaceBlock(v, Material.AIR);
     }
 
     // replace all blocks enclosed in a volume with the given material
     // the volume is specified by two opposite corners of a cuboid
     // both starting and ending point are inclusive
-    public static void replaceVolume(Vector3d vStart, Vector3d vEnd, Material blockMaterial) {
+    public static void replaceVolume(Vec3 vStart, Vec3 vEnd, Material blockMaterial) {
         // extract scalar index ending points from vectors
         double sx = vStart.x();
         double sy = vStart.y();
@@ -99,7 +98,7 @@ public class WorldEditor {
     }
 
     // replace given volume with air
-    public static void clearVolume(Vector3d vStart, Vector3d vEnd) {
+    public static void clearVolume(Vec3 vStart, Vec3 vEnd) {
         replaceVolume(vStart, vEnd, Material.AIR);
     }
 

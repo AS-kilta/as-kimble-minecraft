@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="minecraft_as_kimble" />
+        <module name="MinecraftASKimble" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="minecraft_as_kimble" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

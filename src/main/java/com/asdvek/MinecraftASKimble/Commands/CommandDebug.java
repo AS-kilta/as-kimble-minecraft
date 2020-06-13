@@ -1,6 +1,7 @@
 package com.asdvek.MinecraftASKimble.Commands;
 
 import com.asdvek.MinecraftASKimble.Const;
+import com.asdvek.MinecraftASKimble.Vec3;
 import com.asdvek.MinecraftASKimble.WorldEditor;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -13,6 +14,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
 // TODO: extract common parsing functionality to another object and extend from there
 
@@ -42,14 +44,27 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
             case Const.COMMAND_DEBUG_GEN:
                 {
                     System.out.println("debug gen called");
-                    WorldEditor.replaceVolume(0.5, 4.5, 0.5, 0.5+10.0, 4.5+10.0, 0.5+10.0, Material.DIAMOND_BLOCK);
-                    WorldEditor.replaceVolume(0.5+9.0, 4.5+9.0, 0.5+9.0, 1.5, 5.5, 1.5, Material.BEDROCK);
+                    final double blockSize = 16;
+                    Vec3 vOrigin = new Vec3(0.5, 4.5, 0.5);
+                    Vec3 vOffset = new Vec3(blockSize-1); // ending point is inclusive so subtract 1 from offset
+
+                    WorldEditor.replaceVolume(vOrigin, Vec3.add(vOrigin, vOffset), Material.DIAMOND_BLOCK);
+
+                    // replace block core with bedrock :)
+                    WorldEditor.replaceVolume(
+                            Vec3.add(vOrigin, new Vec3(1.0)),
+                            Vec3.sub(Vec3.add(vOrigin, vOffset), new Vec3(1.0)),
+                            Material.BEDROCK
+                    );
                 }
                 break;
             case Const.COMMAND_DEBUG_BREAK:
                 {
                     System.out.println("debug break called");
-                    WorldEditor.clearVolume(0.5, 4.5, 0.5, 0.5+10.0, 4.5+10.0, 0.5+10.0);
+                    final double blockSize = 16;
+                    Vec3 vOrigin = new Vec3(0.5, 4.5, 0.5);
+                    Vec3 vOffset = new Vec3(blockSize-1); // ending point is inclusive so subtract 1 from offset
+                    WorldEditor.clearVolume(vOrigin, Vec3.add(vOrigin, vOffset));
                 }
                 break;
             default:
