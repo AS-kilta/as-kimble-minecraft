@@ -42,24 +42,13 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
             case Const.COMMAND_DEBUG_GEN:
                 {
                     System.out.println("debug gen called");
-                    // WorldEditor.replaceBlock(0.0, 4.0, 0.0, Material.DIAMOND_BLOCK);
                     WorldEditor.replaceVolume(0.0, 0.0, 0.0, 10.0, 10.0, 10.0, Material.DIAMOND_BLOCK);
-//                    World world = Bukkit.getServer().getWorld("world");
-//                    System.out.println(world);
-//                    Location loc = new Location(world, 0.0, 4.0, 0.0);
-//                    Block block = world.getBlockAt(loc);
-//                    block.setType(Material.DIAMOND_BLOCK);
                 }
                 break;
             case Const.COMMAND_DEBUG_BREAK:
                 {
                     System.out.println("debug break called");
                     WorldEditor.clearVolume(0.0, 0.0, 0.0, 10.0, 10.0, 10.0);
-//                    World world = Bukkit.getServer().getWorld("world");
-//                    System.out.println(world);
-//                    Location loc = new Location(world, 0.0, 4.0, 0.0);
-//                    Block block = world.getBlockAt(loc);
-//                    block.setType(Material.AIR);
                 }
                 break;
             default:
