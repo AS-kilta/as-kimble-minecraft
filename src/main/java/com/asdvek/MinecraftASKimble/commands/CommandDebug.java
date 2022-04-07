@@ -1,20 +1,17 @@
-package com.asdvek.MinecraftASKimble.Commands;
+package com.asdvek.MinecraftASKimble.commands;
 
 import com.asdvek.MinecraftASKimble.Const;
-import com.asdvek.MinecraftASKimble.Vec3;
+import com.asdvek.MinecraftASKimble.math.Vec3;
 import com.asdvek.MinecraftASKimble.WorldEditor;
+import com.asdvek.MinecraftASKimble.ui.DiceView;
 import org.bukkit.*;
-import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 // TODO: extract common parsing functionality to another object and extend from there
 
@@ -22,6 +19,7 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
     private final String[] subcommands = {
             Const.COMMAND_DEBUG_GEN,
             Const.COMMAND_DEBUG_BREAK,
+            Const.COMMAND_DEBUG_TEST_DICE
     };
 
     @Override
@@ -65,6 +63,19 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
                     Vec3 vOrigin = new Vec3(0.5, 4.5, 0.5);
                     Vec3 vOffset = new Vec3(blockSize-1); // ending point is inclusive so subtract 1 from offset
                     WorldEditor.clearVolume(vOrigin, Vec3.add(vOrigin, vOffset));
+                }
+                break;
+            case Const.COMMAND_DEBUG_TEST_DICE:
+                {
+                    System.out.println("debug naks called");
+
+                    // generate random dice pop for testing the DiceView
+                    Random rand = new Random();
+                    Integer samplePop = Math.abs(rand.nextInt()) % 6 + 1;
+                    System.out.println("Debug naks returned " + samplePop.toString());
+
+                    DiceView diceView = new DiceView(samplePop);
+                    diceView.draw();
                 }
                 break;
             default:
