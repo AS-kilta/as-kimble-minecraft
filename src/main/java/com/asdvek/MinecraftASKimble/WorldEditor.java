@@ -1,5 +1,6 @@
 package com.asdvek.MinecraftASKimble;
 
+import com.asdvek.MinecraftASKimble.math.Vec3;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

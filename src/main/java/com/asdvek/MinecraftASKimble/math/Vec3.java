@@ -1,4 +1,4 @@
-package com.asdvek.MinecraftASKimble;
+package com.asdvek.MinecraftASKimble.math;
 
 /**
  * A minimal 3 dimensional double vector implementation.
@@ -44,6 +44,13 @@ public class Vec3 {
         this.z = z;
     }
 
+    // copy values from pre-existing vector
+    public Vec3(Vec3 v) {
+        this.x = v.x();
+        this.y = v.y();
+        this.z = v.z();
+    }
+
     // add v2 to v1 and return result as a new Vec3 object
     public static Vec3 add(Vec3 v1, Vec3 v2) {
         return new Vec3(v1.x()+v2.x(), v1.y()+v2.y(), v1.z()+v2.z());
@@ -57,5 +64,14 @@ public class Vec3 {
     // multiply vector by a scalar and return result as a new Vec3 object
     public static Vec3 mult(Vec3 v, double s) {
         return new Vec3(s*v.x(), s*v.y(), s*v.z());
+    }
+
+    // carry out cross product v1 x v2 and return result as a new Vec3 object
+    public static Vec3 cross(Vec3 v1, Vec3 v2) {
+        return new Vec3(
+        v1.y()*v2.z() - v1.z()*v2.y(),
+        v1.z()*v2.x() - v1.x()*v2.z(),
+        v1.x()*v2.y() - v1.y()*v2.x()
+        );
     }
 }

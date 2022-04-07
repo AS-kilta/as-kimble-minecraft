@@ -21,6 +21,9 @@ public class Const {
     public static final String COMMAND_DEBUG_GEN = "gen";           // generate blocks
     public static final String COMMAND_DEBUG_BREAK = "break";       // break blocks
 
+    // temporary debugging commands
+    public static final String COMMAND_DEBUG_TEST_DICE = "naks";    // call DiceView's draw() function
+
     // command feedback messages
     public static final String MSG_NOT_IMPLEMENTED = "Command has not been implemented!";
     public static final String MSG_INVALID_COMMAND = "Command does not exist!";
