@@ -7,23 +7,23 @@ Minecraft server side client for the Aalto University Guild of Automation and Sy
 
 ### IDE Setup
 1. Install [IntelliJ IDEA](https://www.jetbrains.com/idea/) IDE.
-2. Install [Java JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html). On Ubuntu you can install
+2. Install [Java JDK](https://www.oracle.com/java/technologies/downloads/#java17). On Ubuntu you can install
 the right JDK version with the command
     ```
-    sudo apt install openjdk-8-jdk
+    sudo apt install openjdk-17-jdk
     ```
 
 
 ### Project setup
 1. Clone the project repository to your computer.
    ```
-   git clone git@gitlab.com:asdvek/minecraft_as_kimble.git
+   git clone git@github.com:AS-kilta/as-kimble-minecraft.git
    ```
 2. Open IntelliJ IDEA
 3. Select `Open or Import` navigate to the location where you cloned the repository and select the repository root directory,
 and click ok.
 4. Once the project has loaded go to `File`>`Project Structure...` from the top menu and make sure that the Project SDK
-uses Java SE version 8 or equivalently JRE version 1.8.
+uses the right java version.
 
 
 ### Development Server
@@ -38,14 +38,14 @@ using the following [guide](https://docs.microsoft.com/en-us/windows/wsl/install
     **Windows with WSL**
     
     On WSL you can access the Windows filesystem under `/mnt/c`. As an example if the repository is located at
-    `C:\Users\User\Code\minecraft_as_kimble` on the Windows file system, you access the directory on the WSL side with the command
+    `C:\Users\User\Code\as-kimble-minecraft` on the Windows file system, you access the directory on the WSL side with the command
     ```
-    cd /mnt/c/Users/User/Code/minecraft_as_kimble/server
+    cd /mnt/c/Users/User/Code/as-kimble-minecraft/server
     ```
    
 2. Download Spigot
     ```
-    wget https://cdn.getbukkit.org/spigot/spigot-1.15.2.jar
+    wget https://papermc.io/api/v2/projects/paper/versions/1.18.2/builds/282/downloads/paper-1.18.2-282.jar
     ```
    
 3. Launch server. On first startup this will generate the world and various other config files which might take a while.
@@ -55,7 +55,7 @@ using the following [guide](https://docs.microsoft.com/en-us/windows/wsl/install
     On Windows completing the **IDE Setup** section only installs Java JDK on Windows, but you will also need to install it on WSL to run the server.
     Install the required Java runtime with the following command in the WSL terminal.
     ```
-    sudo apt install openjdk-8-jdk
+    sudo apt install openjdk-17-jdk
     ```
    
 4. Launching the server should have generated a `plugins` directory. Place the compiled plugin jar file from `../target` to the `plugins`
@@ -69,6 +69,10 @@ You can use the script `cleanup.sh` to remove the world data and config files to
 In IntelliJ IDEA expand the panel `maven` on the right hand side of the window. Double click the menu item `package`
 under `MinecraftASKimble`>`Lifecycle` to compile the plugin. The compiled plugin is placed in the `target` directory.
 
+Alternatively you can invoke the maven package command from the terminal provided that you have it installed.
+   ```
+   mvn package
+   ```
 
 # Testing
 
