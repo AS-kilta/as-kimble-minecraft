@@ -4,7 +4,7 @@ launch-server:
 	cd ./server && screen -S minecraft ./start.sh
 
 reload: deploy
-	screen -S minecraft -p 0 -X stuff "`printf "reload\r"`"
+	screen -S minecraft -p 0 -X stuff "`printf "reload confirm\r"`"
 
 deploy: build
 	mv ./target/MinecraftASKimble-*-SNAPSHOT.jar ./server/plugins
