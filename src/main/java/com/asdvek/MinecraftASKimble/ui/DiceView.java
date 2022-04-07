@@ -3,7 +3,6 @@ package com.asdvek.MinecraftASKimble.ui;
 import com.asdvek.MinecraftASKimble.WorldEditor;
 import com.asdvek.MinecraftASKimble.math.Mat3;
 import com.asdvek.MinecraftASKimble.math.Vec3;
-import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException;
 import org.bukkit.Material;
 
 public class DiceView implements Drawable {
@@ -129,7 +128,7 @@ public class DiceView implements Drawable {
     /* constructors */
     public DiceView(Integer initialValue) {
         if (initialValue < 1 || initialValue > 6) {
-            throw new ValueException("initialValue needs to be in the range [1, 6].");
+            throw new IllegalArgumentException("initialValue needs to be in the range [1, 6].");
         }
         value = initialValue;
     }
@@ -155,7 +154,7 @@ public class DiceView implements Drawable {
     // set the value which should be shown in the top face of the dice
     public void setValue(int newValue) {
         if (newValue < 1 || newValue > 6) {
-            throw new ValueException("newValue needs to be in the range [1, 6].");
+            throw new IllegalArgumentException("newValue needs to be in the range [1, 6].");
         }
         value = newValue;
     }
