@@ -4,4 +4,5 @@ package com.asdvek.MinecraftASKimble.ui;
 public interface Drawable {
     // draw the UI state by creating/destroying blocks in the minecraft world
     public void draw();
+    public void clean();
 }
