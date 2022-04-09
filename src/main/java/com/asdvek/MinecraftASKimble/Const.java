@@ -23,6 +23,7 @@ public class Const {
 
     // temporary debugging commands
     public static final String COMMAND_DEBUG_TEST_DICE = "naks";    // call DiceView's draw() function
+    public static final String COMMAND_DEBUG_CLEAN_DICE = "clean";  // remove Dice blocks
 
     // command feedback messages
     public static final String MSG_NOT_IMPLEMENTED = "Command has not been implemented!";

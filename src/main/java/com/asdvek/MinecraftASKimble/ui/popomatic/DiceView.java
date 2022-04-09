@@ -1,8 +1,9 @@
-package com.asdvek.MinecraftASKimble.ui;
+package com.asdvek.MinecraftASKimble.ui.popomatic;
 
 import com.asdvek.MinecraftASKimble.WorldEditor;
 import com.asdvek.MinecraftASKimble.math.Mat3;
 import com.asdvek.MinecraftASKimble.math.Vec3;
+import com.asdvek.MinecraftASKimble.ui.Drawable;
 import org.bukkit.Material;
 
 public class DiceView implements Drawable {
@@ -14,7 +15,7 @@ public class DiceView implements Drawable {
     private final Material blackPixelBlock = Material.BLACK_WOOL;
 
     // dice central block location
-    private Vec3 diceCenterLocation = new Vec3(0.5, 7.5, 0.5);
+    private Vec3 diceCenterLocation = new Vec3(0.5, -56.5, 0.5);
 
     // Represents a dice in its own coordinate space
     //  the 2d arrays here can be thought of slices of the volume for each value of z in the range [0, 6]
@@ -131,6 +132,13 @@ public class DiceView implements Drawable {
             throw new IllegalArgumentException("initialValue needs to be in the range [1, 6].");
         }
         value = initialValue;
+    }
+    public DiceView(Integer initialValue, Vec3 diceCenter) {
+        if (initialValue < 1 || initialValue > 6) {
+            throw new IllegalArgumentException("initialValue needs to be in the range [1, 6].");
+        }
+        value = initialValue;
+        diceCenterLocation = diceCenter;
     }
 
 

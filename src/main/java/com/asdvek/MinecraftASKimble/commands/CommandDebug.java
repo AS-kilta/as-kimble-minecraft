@@ -3,7 +3,8 @@ package com.asdvek.MinecraftASKimble.commands;
 import com.asdvek.MinecraftASKimble.Const;
 import com.asdvek.MinecraftASKimble.math.Vec3;
 import com.asdvek.MinecraftASKimble.WorldEditor;
-import com.asdvek.MinecraftASKimble.ui.DiceView;
+import com.asdvek.MinecraftASKimble.ui.popomatic.DiceView;
+import com.asdvek.MinecraftASKimble.ui.popomatic.Dome;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -36,6 +37,9 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
         {
             return true;
         }
+
+        // FIXME: remove once done debugging
+        Vec3 popomaticLocation = new Vec3(0.5, -56.5, 100.5);
 
         // subcommand handling
         switch (args[0]) {
@@ -74,10 +78,20 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
                     Integer samplePop = Math.abs(rand.nextInt()) % 6 + 1;
                     System.out.println("Debug naks returned " + samplePop.toString());
 
-                    DiceView diceView = new DiceView(samplePop);
+                    DiceView diceView = new DiceView(samplePop, popomaticLocation);
                     diceView.draw();
+                    Dome dome = new Dome(popomaticLocation);
+                    dome.draw();
                 }
                 break;
+            case Const.COMMAND_DEBUG_CLEAN_DICE:
+                {
+                    System.out.println("debug clean called");
+                    Vec3 cleanStartCorner = Vec3.add(popomaticLocation, new Vec3(-15, -3, -15));
+                    Vec3 cleanEndCorner = Vec3.add(popomaticLocation, new Vec3(15, 15, 15));
+                    WorldEditor.clearVolume(cleanStartCorner, cleanEndCorner);
+                }
+            break;
             default:
                 break;
         }
