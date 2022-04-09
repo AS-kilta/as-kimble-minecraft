@@ -18,12 +18,9 @@ public class Const {
     // debug
     // General purpose debugging
     public static final String COMMAND_DEBUG = "debug";
-    public static final String COMMAND_DEBUG_GEN = "gen";           // generate blocks
-    public static final String COMMAND_DEBUG_BREAK = "break";       // break blocks
 
     // board generation debugging
     public static final String COMMAND_DEBUG_TEST_DICE = "naks";    // call DiceView's draw() function
-    public static final String COMMAND_DEBUG_CLEAN_DICE = "clean";  // remove Dice blocks
     public static final String COMMAND_DEBUG_GEN_BOARD = "board-generate";  // Generate kimble board
     public static final String COMMAND_DEBUG_CLEAN_BOARD = "board-clean";   // Clean kimble board
 

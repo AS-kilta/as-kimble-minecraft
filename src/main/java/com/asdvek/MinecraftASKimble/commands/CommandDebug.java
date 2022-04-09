@@ -19,10 +19,7 @@ import java.util.*;
 
 public class CommandDebug implements CommandExecutor, TabCompleter {
     private final String[] subcommands = {
-            Const.COMMAND_DEBUG_GEN,
-            Const.COMMAND_DEBUG_BREAK,
             Const.COMMAND_DEBUG_TEST_DICE,
-            Const.COMMAND_DEBUG_CLEAN_DICE,
             Const.COMMAND_DEBUG_GEN_BOARD,
             Const.COMMAND_DEBUG_CLEAN_BOARD
     };
