@@ -1,9 +1,11 @@
 package com.asdvek.MinecraftASKimble.commands;
 
 import com.asdvek.MinecraftASKimble.Const;
+import com.asdvek.MinecraftASKimble.logic.KimbleBoard;
+import com.asdvek.MinecraftASKimble.logic.KimbleGame;
 import com.asdvek.MinecraftASKimble.math.Vec3;
 import com.asdvek.MinecraftASKimble.WorldEditor;
-import com.asdvek.MinecraftASKimble.ui.DiceView;
+import com.asdvek.MinecraftASKimble.ui.BoardView;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,10 +19,17 @@ import java.util.*;
 
 public class CommandDebug implements CommandExecutor, TabCompleter {
     private final String[] subcommands = {
-            Const.COMMAND_DEBUG_GEN,
-            Const.COMMAND_DEBUG_BREAK,
-            Const.COMMAND_DEBUG_TEST_DICE
+            Const.COMMAND_DEBUG_TEST_DICE,
+            Const.COMMAND_DEBUG_GEN_BOARD,
+            Const.COMMAND_DEBUG_CLEAN_BOARD
     };
+
+    // instance of the game logic state
+    KimbleGame gameState = new KimbleGame();
+
+    // game state visualization
+    Vec3 boardOrigin = new Vec3(0.5, -59.5, 0.5);
+    BoardView boardView = new BoardView(boardOrigin, gameState);
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -32,51 +41,25 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
         Player player = (Player) sender;
 
         // validate command arguments
-        if (args.length == 0)
-        {
-            return true;
-        }
+        if (args.length == 0) { return true; }
 
         // subcommand handling
         switch (args[0]) {
-            case Const.COMMAND_DEBUG_GEN:
-                {
-                    System.out.println("debug gen called");
-                    final double blockSize = 16;
-                    Vec3 vOrigin = new Vec3(0.5, 4.5, 0.5);
-                    Vec3 vOffset = new Vec3(blockSize-1); // ending point is inclusive so subtract 1 from offset
-
-                    WorldEditor.replaceVolume(vOrigin, Vec3.add(vOrigin, vOffset), Material.DIAMOND_BLOCK);
-
-                    // replace block core with bedrock :)
-                    WorldEditor.replaceVolume(
-                            Vec3.add(vOrigin, new Vec3(1.0)),
-                            Vec3.sub(Vec3.add(vOrigin, vOffset), new Vec3(1.0)),
-                            Material.BEDROCK
-                    );
-                }
-                break;
-            case Const.COMMAND_DEBUG_BREAK:
-                {
-                    System.out.println("debug break called");
-                    final double blockSize = 16;
-                    Vec3 vOrigin = new Vec3(0.5, 4.5, 0.5);
-                    Vec3 vOffset = new Vec3(blockSize-1); // ending point is inclusive so subtract 1 from offset
-                    WorldEditor.clearVolume(vOrigin, Vec3.add(vOrigin, vOffset));
-                }
-                break;
             case Const.COMMAND_DEBUG_TEST_DICE:
                 {
                     System.out.println("debug naks called");
-
-                    // generate random dice pop for testing the DiceView
-                    Random rand = new Random();
-                    Integer samplePop = Math.abs(rand.nextInt()) % 6 + 1;
-                    System.out.println("Debug naks returned " + samplePop.toString());
-
-                    DiceView diceView = new DiceView(samplePop);
-                    diceView.draw();
+                    int naksResult = gameState.debugNaks();
+                    System.out.println("Debug naks returned " + naksResult);
+                    boardView.draw();
                 }
+                break;
+            case Const.COMMAND_DEBUG_GEN_BOARD:
+                System.out.println("debug board-generate called");
+                boardView.draw();
+                break;
+            case Const.COMMAND_DEBUG_CLEAN_BOARD:
+                System.out.println("debug board-clean called");
+                boardView.clean();
                 break;
             default:
                 break;

@@ -44,7 +44,7 @@ public class KimbleBoard {
     /**
      * The spaces where each player moves his piece into play.
      */
-    static HashMap<Team, Integer> mine_space = new HashMap<Team, Integer>() {{
+    static final HashMap<Team, Integer> mine_space = new HashMap<Team, Integer>() {{
         put(Team.RED,       0);
         put(Team.BLUE,      7);
         put(Team.YELLOW,    14);
@@ -54,7 +54,7 @@ public class KimbleBoard {
     /**
      * The last space before moving to goal spaces for each team.
      */
-    static HashMap<Team, Integer> last_space = new HashMap<Team, Integer>() {{
+    static final HashMap<Team, Integer> last_space = new HashMap<Team, Integer>() {{
         put(Team.RED,       27);
         put(Team.BLUE,      6);
         put(Team.YELLOW,    13);
@@ -64,7 +64,7 @@ public class KimbleBoard {
     /**
      * The first space of each team's goal spaces.
      */
-    static HashMap<Team, Integer> goal_start = new HashMap<Team, Integer>() {{
+    static final HashMap<Team, Integer> goal_start = new HashMap<Team, Integer>() {{
         put(Team.RED,       28);
         put(Team.BLUE,      32);
         put(Team.YELLOW,    36);
@@ -74,7 +74,7 @@ public class KimbleBoard {
     /**
      * The pseudo-space that is used to refer to each player's home space.
      */
-    static HashMap<Team, Integer> home_space = new HashMap<Team, Integer>() {{
+    static final HashMap<Team, Integer> home_space = new HashMap<Team, Integer>() {{
         put(Team.RED,       -1);
         put(Team.BLUE,      -2);
         put(Team.YELLOW,    -3);

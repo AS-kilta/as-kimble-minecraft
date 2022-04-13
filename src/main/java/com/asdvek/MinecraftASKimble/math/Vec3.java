@@ -1,5 +1,7 @@
 package com.asdvek.MinecraftASKimble.math;
 
+import java.lang.Math;
+
 /**
  * A minimal 3 dimensional double vector implementation.
  * Arithmetic is implemented in static methods returning new objects rather than modifying existing ones with side effects.
@@ -21,6 +23,9 @@ public class Vec3 {
     public void setY(double y) { this.y = y; }
     public void setZ(double z) { this.z = z; }
     public void set(double x, double y, double z) { this.x = x; this.y = y; this.z = z; }
+
+    // properties
+    public double length() { return Math.sqrt(this.x*this.x + this.y*this.y + this.z*this.z); }
 
     /* constructors */
     // initialise to zero vector by default
@@ -73,5 +78,13 @@ public class Vec3 {
         v1.z()*v2.x() - v1.x()*v2.z(),
         v1.x()*v2.y() - v1.y()*v2.x()
         );
+    }
+
+    // carry out cross product v1 x v2 and return result as a new Vec3 object
+    public static double distance(Vec3 v1, Vec3 v2) {
+        double dx = v2.x() - v1.x();
+        double dy = v2.y() - v1.y();
+        double dz = v2.z() - v1.z();
+        return Math.sqrt(dx*dx + dy*dy + dz*dz);
     }
 }
