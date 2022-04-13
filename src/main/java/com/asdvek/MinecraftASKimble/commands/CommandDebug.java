@@ -24,6 +24,13 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
             Const.COMMAND_DEBUG_CLEAN_BOARD
     };
 
+    // instance of the game logic state
+    KimbleGame gameState = new KimbleGame();
+
+    // game state visualization
+    Vec3 boardOrigin = new Vec3(0.5, -59.5, 0.5);
+    BoardView boardView = new BoardView(boardOrigin, gameState);
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // Make sure a player executed the command
@@ -34,16 +41,7 @@ public class CommandDebug implements CommandExecutor, TabCompleter {
         Player player = (Player) sender;
 
         // validate command arguments
-        if (args.length == 0)
-        {
-            return true;
-        }
-
-        // game logic instance
-        KimbleGame gameState = new KimbleGame();
-
-        Vec3 boardOrigin = new Vec3(0.5, -59.5, 0.5);
-        BoardView boardView = new BoardView(boardOrigin, gameState);
+        if (args.length == 0) { return true; }
 
         // subcommand handling
         switch (args[0]) {
